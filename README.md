@@ -54,3 +54,46 @@ $subaccount = new Subaccount(
 $response = $subaccountEndpoint->create($subaccount);
 var_dump($response);
 ```
+
+### Exemplo de Resposta da API
+
+```php
+array(2) {
+    ["status_code"] => int(200),
+    ["response"] => array(25) {
+        ["object"] => string(7) "account",
+        ["id"] => string(36) "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        ["name"] => string(16) "Minha Subconta",
+        ["email"] => string(22) "email@exemplo.com",
+        ["loginEmail"] => string(22) "email@exemplo.com",
+        ["phone"] => NULL,
+        ["mobilePhone"] => string(11) "41999999999",
+        ["address"] => NULL,
+        ["addressNumber"] => string(3) "947",
+        ["complement"] => NULL,
+        ["province"] => NULL,
+        ["postalCode"] => string(8) "82000000",
+        ["cpfCnpj"] => string(14) "00000000000000",
+        ["birthDate"] => NULL,
+        ["personType"] => string(8) "JURIDICA",
+        ["companyType"] => string(7) "LIMITED",
+        ["city"] => int(13405),
+        ["state"] => string(2) "PR",
+        ["country"] => string(6) "Brasil",
+        ["site"] => NULL,
+        ["walletId"] => string(36) "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        ["apiKey"] => string(166) "chave_api_generica",
+        ["accountNumber"] => array(3) {
+            ["agency"] => string(4) "0001",
+            ["account"] => string(6) "123456",
+            ["accountDigit"] => string(1) "1"
+        },
+        ["incomeValue"] => int(5000),
+        ["commercialInfoExpiration"] => NULL
+    }
+}
+```
+
+## Licença
+
+Este projeto está licenciado sob a licença MIT. Consulte o arquivo `LICENSE` para mais detalhes.
