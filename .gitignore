@@ -1,0 +1,10 @@
+#ignorar arquivos de processamento do servidor
+*.lockfile
+#arquivos de backup do winmerge
+*.log
+/vendor/
+/tests/
+.idea
+composer.lock
+.env
+.cache
