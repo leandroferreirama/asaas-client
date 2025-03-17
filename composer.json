@@ -1,0 +1,30 @@
+{
+    "name": "leandroferreirama/asaas-client",
+    "description": "Cliente PHP para integração com a API Asaas, utilizando cURL.",
+    "type": "library",
+    "keywords": ["asaas", "api", "php", "integration"],
+    "license": "MIT",
+    "require": {
+        "php": "^8.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Asaas\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Leandro Ferreira",
+            "email": "suporte@integracaosistema.com.br",
+            "homepage": "https://github.com/leandroferreirama"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^10.0"
+    },
+    "scripts": {
+        "test": "phpunit --testdox"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
