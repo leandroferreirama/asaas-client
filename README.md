@@ -185,6 +185,125 @@ array(2) {
 }
 ```
 
+## Criar Cobrança Parcelada via Boleto
+
+O exemplo abaixo demonstra como criar uma cobrança parcelada via boleto utilizando o cliente PHP:
+
+```php
+<?php
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use Asaas\AsaasConfig;
+use Asaas\Config\VariavelAmbiente;
+use Asaas\HttpClient;
+use Asaas\Endpoints\BoletoEndpoint;
+use Asaas\Factories\ChargeFactory;
+
+try {
+    // Token de acesso
+    VariavelAmbiente::load(__DIR__.'/../');
+    $token = getenv('ASAAS_TOKEN');
+    
+    // Configuração
+    $config = new AsaasConfig(AsaasConfig::ENV_SANDBOX);
+    $httpClient = new HttpClient(
+        $token,
+        $config
+    );
+
+    $boletoEndpoint = new BoletoEndpoint($httpClient);
+
+    // Criando uma cobrança parcelada via boleto
+    $boletoCharge = ChargeFactory::createCharge(
+        'cus_000006562001', // ID do cliente
+        'BOLETO', // Tipo de cobrança
+        0, // Valor não necessário para parcelamento
+        '2025-04-01', // Data de vencimento
+        'Pedido Parcelado 056985', // Descrição (opcional)
+        '056985' // Referência externa (opcional)
+    );
+
+    // Adicionando detalhes do parcelamento
+    $boletoCharge->addInstallmentFields(
+        3,       // Número de parcelas
+        450.0,   // Valor total (opcionalmente pode usar installmentValue)
+        null     // Valor individual de cada parcela (calculado automaticamente)
+    );
+    $boletoCharge->addInterest(1);
+    $boletoCharge->addFine(2, 'PERCENTAGE');
+    $boletoCharge->addDiscount(10, 5, 'PERCENTAGE');
+
+    // Criando a cobrança e obtendo o Identification Field
+    $response = $boletoEndpoint->create($boletoCharge);
+
+    // Resposta final combinada
+    var_dump($response);
+} catch (Exception $e) {
+    echo 'Erro: ' . $e->getMessage();
+}
+```
+
+### Exemplo de Resposta da API
+
+```php
+array(2) {
+    ["status_code"] => int(200),
+    ["response"] => array(39) {
+        ["object"] => string(7) "payment",
+        ["id"] => string(20) "pay_t5bbsyj68t8ceh23",
+        ["dateCreated"] => string(10) "2025-03-18",
+        ["customer"] => string(16) "cus_000006562001",
+        ["paymentLink"] => NULL,
+        ["value"] => int(177),
+        ["netValue"] => float(175.01),
+        ["originalValue"] => NULL,
+        ["interestValue"] => NULL,
+        ["description"] => string(10) "Pedido 123",
+        ["billingType"] => string(6) "BOLETO",
+        ["canBePaidAfterDueDate"] => bool(true),
+        ["pixTransaction"] => NULL,
+        ["status"] => string(7) "PENDING",
+        ["dueDate"] => string(10) "2025-12-01",
+        ["originalDueDate"] => string(10) "2025-12-01",
+        ["paymentDate"] => NULL,
+        ["clientPaymentDate"] => NULL,
+        ["installmentNumber"] => NULL,
+        ["invoiceUrl"] => string(44) "https://sandbox.asaas.com/i/t5bbsyj68t8ceh23",
+        ["invoiceNumber"] => string(8) "08021834",
+        ["externalReference"] => string(3) "123",
+        ["deleted"] => bool(false),
+        ["anticipated"] => bool(false),
+        ["anticipable"] => bool(false),
+        ["creditDate"] => NULL,
+        ["estimatedCreditDate"] => NULL,
+        ["transactionReceiptUrl"] => NULL,
+        ["nossoNumero"] => string(8) "10720541",
+        ["bankSlipUrl"] => string(48) "https://sandbox.asaas.com/b/pdf/t5bbsyj68t8ceh23",
+        ["lastInvoiceViewedDate"] => NULL,
+        ["lastBankSlipViewedDate"] => NULL,
+        ["discount"] => array(4) {
+            ["value"] => float(10),
+            ["limitDate"] => NULL,
+            ["dueDateLimitDays"] => int(5),
+            ["type"] => string(10) "PERCENTAGE"
+        },
+        ["fine"] => array(2) {
+            ["value"] => float(2),
+            ["type"] => string(10) "PERCENTAGE"
+        },
+        ["interest"] => array(2) {
+            ["value"] => float(1),
+            ["type"] => string(10) "PERCENTAGE"
+        },
+        ["postalService"] => bool(false),
+        ["custody"] => NULL,
+        ["escrow"] => NULL,
+        ["refunds"] => NULL
+    }
+}
+```
+
 ## Licença
 
 Este projeto está licenciado sob a licença MIT. Consulte o arquivo `LICENSE` para mais detalhes.
