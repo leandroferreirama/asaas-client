@@ -117,6 +117,78 @@ class BaseCharge implements TransactionInterface
     }
 
     /**
+     * Adiciona dados de desconto à cobrança.
+     *
+     * @param float $value Valor do desconto
+     * @param int $dueDateLimitDays Dias limite para aplicar o desconto
+     * @param string $type Tipo do desconto (ex: FIXED ou PERCENTAGE)
+     *
+     * @throws InvalidArgumentException
+     */
+    public function addDiscount(float $value, int $dueDateLimitDays, ?string $type = 'FIXED'): void
+    {
+        if ($value <= 0) {
+            throw new InvalidArgumentException('O valor do desconto deve ser maior que zero.');
+        }
+
+        if ($dueDateLimitDays < 0) {
+            throw new InvalidArgumentException('Os dias limite para o desconto não podem ser negativos.');
+        }
+
+        if (!in_array($type, ['FIXED', 'PERCENTAGE'], true)) {
+            throw new InvalidArgumentException('O tipo de desconto deve ser "FIXED" ou "PERCENTAGE".');
+        }
+
+        $this->extraFields['discount'] = [
+            'value' => $value,
+            'dueDateLimitDays' => $dueDateLimitDays,
+            'type' => $type,
+        ];
+    }
+
+    /**
+     * Adiciona dados de juros à cobrança.
+     *
+     * @param float $value Valor do juros (percentual)
+     *
+     * @throws InvalidArgumentException
+     */
+    public function addInterest(float $value): void
+    {
+        if ($value <= 0) {
+            throw new InvalidArgumentException('O valor do juros deve ser maior que zero.');
+        }
+
+        $this->extraFields['interest'] = [
+            'value' => $value,
+        ];
+    }
+
+    /**
+     * Adiciona dados de multa à cobrança.
+     *
+     * @param float $value Valor da multa
+     * @param string $type Tipo da multa (ex: FIXED ou PERCENTAGE)
+     *
+     * @throws InvalidArgumentException
+     */
+    public function addFine(float $value, ?string $type = 'FIXED'): void
+    {
+        if ($value <= 0) {
+            throw new InvalidArgumentException('O valor da multa deve ser maior que zero.');
+        }
+
+        if (!in_array($type, ['FIXED', 'PERCENTAGE'], true)) {
+            throw new InvalidArgumentException('O tipo da multa deve ser "FIXED" ou "PERCENTAGE".');
+        }
+
+        $this->extraFields['fine'] = [
+            'value' => $value,
+            'type' => $type,
+        ];
+    }
+
+    /**
      * Converte os dados da cobrança para um array.
      *
      * @return array
