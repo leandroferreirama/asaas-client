@@ -22,7 +22,11 @@ Este documento descreve como utilizar o cliente PHP para integração com a API 
    ASAAS_TOKEN=seu_token_de_acesso_aqui
    ```
 
-## Criar Subconta
+## Exemplos
+
+Seguem alguns exemplos de uso, mas não deixem de explorar todos os exemplos disponíveis na pasta `example`.
+
+### Criar Subconta
 
 O exemplo abaixo demonstra como criar uma subconta utilizando o cliente PHP:
 
@@ -62,7 +66,7 @@ $response = $subaccountEndpoint->create($subaccount);
 var_dump($response);
 ```
 
-### Exemplo de Resposta da API
+#### Exemplo de Resposta da API
 
 ```php
 array(2) {
@@ -101,7 +105,7 @@ array(2) {
 }
 ```
 
-## Criar Customer
+### Criar Customer
 
 O exemplo abaixo demonstra como criar um customer utilizando o cliente PHP:
 
@@ -145,7 +149,7 @@ $response = $customerEndpoint->create($customer);
 var_dump($response);
 ```
 
-### Exemplo de Resposta da API
+#### Exemplo de Resposta da API
 
 ```php
 array(2) {
@@ -185,7 +189,7 @@ array(2) {
 }
 ```
 
-## Criar Cobrança Parcelada via Boleto
+### Criar Cobrança Parcelada via Boleto
 
 O exemplo abaixo demonstra como criar uma cobrança parcelada via boleto utilizando o cliente PHP:
 
@@ -244,7 +248,7 @@ try {
 }
 ```
 
-### Exemplo de Resposta da API
+#### Exemplo de Resposta da API
 
 ```php
 array(2) {

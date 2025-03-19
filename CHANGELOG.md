@@ -8,6 +8,17 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 ### Adicionado
 - Planejamento para novos recursos e melhorias.
 
+## [0.0.4] - 2025-03-20
+### Adicionado
+- Suporte para incluir webhooks no cadastro de subaccounts.
+- Endpoint para listagem de webhooks.
+- Exemplo de criação de webhooks utilizando métodos `add`.
+
+## [0.0.3] - 2025-03-19
+### Adicionado
+- Suporte à emissão de boletos bancários.
+- Métodos para configurar descontos, juros e multas em cobranças.
+
 ## [0.0.2] - 2025-03-18
 ### Adicionado
 - Endpoint para criação de customers.
