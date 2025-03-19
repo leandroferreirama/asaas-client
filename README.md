@@ -128,18 +128,17 @@ $customerEndpoint = new CustomerEndpoint($httpClient);
 // Criar customer
 $customer = new Customer(
     'Cliente Completo',
-    'cliente@teste.com',
     '12345678909', // CPF ou CNPJ
-    '5511999998888', // Telefone
-    '88000000',    // CEP
+    'cliente@teste.com', // Email
+    '+551140028922', // Telefone fixo
+    '+5511999998888', // Telefone celular
+    '88000000', // CEP
     'Rua Completa', // Endereço
-    '123',         // Número
+    '123', // Número
+    'Apto 10', // Complemento
     'Bairro Completo', // Bairro
-    'Curitiba',    // Cidade
-    'PR',          // Estado
-    'Brasil',      // País
-    'Ref123',      // Referência externa (opcional)
-    'Apto 10'      // Complemento (opcional)
+    'Ref123', // Referência externa (opcional)
+    true // Notificações desativadas
 );
 
 $response = $customerEndpoint->create($customer);
