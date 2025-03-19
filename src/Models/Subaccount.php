@@ -21,11 +21,14 @@ class Subaccount implements TransactionInterface
         public ?string $companyType = null,
         public ?string $phone = null,
         public ?string $site = null,
-        public ?string $complement = null
+        public ?string $complement = null,
+        public array $webhooks = [] // Adicionado para aceitar webhooks
     ) {}
 
     public function toArray(): array
     {
-        return get_object_vars($this);
+        $data = get_object_vars($this);
+        $data['webhooks'] = array_map(fn($webhook) => $webhook->toArray(), $this->webhooks);
+        return $data;
     }
 }
