@@ -14,21 +14,13 @@ class BoletoEndpoint
         $this->httpClient = $httpClient;
     }
 
-    public function createWithIdentificationField(BaseCharge $boletoCharge): array
+    public function create(BaseCharge $boletoCharge): array
     {
         // Etapa 1: Criação da cobrança BOLETO
-        $chargeResponse = $this->httpClient->request('POST', '/lean/payments', $boletoCharge->toArray());
+        $chargeResponse = $this->httpClient->request('POST', '/payments', $boletoCharge->toArray());
 
         // Verificando se o ID foi retornado na chave 'response'
-        if (isset($chargeResponse['response']['id'])) {
-            $paymentId = $chargeResponse['response']['id'];
-
-            // Etapa 2: Recuperação do IdentificationField do BOLETO
-            $identificationFieldResponse = $this->httpClient->request('GET', "/payments/{$paymentId}/identificationField");
-
-            // Adicionando o campo de identificação à resposta original
-            $chargeResponse['response']['identificationField'] = $identificationFieldResponse['response'];
-        } else {
+        if (!isset($chargeResponse['response']['id'])) {
             throw new \Exception('Erro ao criar a cobrança BOLETO: ID não retornado na resposta.');
         }
 
