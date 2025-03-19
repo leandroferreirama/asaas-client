@@ -40,7 +40,7 @@ try {
     );
 
     // Criando a cobrança e obtendo o Identification Field
-    $response = $boletoEndpoint->createWithIdentificationField($boletoCharge);
+    $response = $boletoEndpoint->create($boletoCharge);
 
     // Resposta final combinada
     var_dump($response);

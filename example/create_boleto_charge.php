@@ -26,14 +26,18 @@ try {
     $boletoCharge = ChargeFactory::createCharge(
         'cus_000006562001', // ID do cliente
         'BOLETO', // Tipo de cobrança
-        175.35, // Valor da cobrança
+        177, // Valor da cobrança
         '2025-12-01', // Data de vencimento
         'Pedido 123', // Descrição (opcional)
         '123' // Referência externa (opcional)
     );
 
+    $boletoCharge->addInterest(1);
+    $boletoCharge->addFine(2, 'PERCENTAGE');
+    $boletoCharge->addDiscount(10, 5, 'PERCENTAGE');
+
     // Criando a cobrança e obtendo o Identification Field
-    $response = $boletoEndpoint->createWithIdentificationField($boletoCharge);
+    $response = $boletoEndpoint->create($boletoCharge);
 
     // Resposta final combinada
     var_dump($response);
