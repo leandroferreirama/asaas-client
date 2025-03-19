@@ -8,9 +8,13 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 ### Adicionado
 - Planejamento para novos recursos e melhorias.
 
+## [0.0.2] - 2025-03-18
+### Adicionado
+- Endpoint para criação de customers.
+- Endpoint para consulta de customers por ID.
+
 ## [0.0.1] - 2025-03-16
 ### Adicionado
 - Primeira versão inicial do cliente PHP para integração com a API Asaas.
 - Suporte à criação de subcontas.
 - Configuração inicial do projeto com `composer.json`.
-- Testes unitários configurados com PHPUnit.

@@ -94,6 +94,86 @@ array(2) {
 }
 ```
 
+## Criar Customer
+
+O exemplo abaixo demonstra como criar um customer utilizando o cliente PHP:
+
+```php
+<?php
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use Asaas\AsaasConfig;
+use Asaas\HttpClient;
+use Asaas\Endpoints\CustomerEndpoint;
+use Asaas\Models\Customer;
+
+// Configuração
+$config = new AsaasConfig(AsaasConfig::ENV_SANDBOX);
+$httpClient = new HttpClient($token, $config);
+$customerEndpoint = new CustomerEndpoint($httpClient);
+
+// Criar customer
+$customer = new Customer(
+    'Cliente Completo',
+    'cliente@teste.com',
+    '12345678909', // CPF ou CNPJ
+    '5511999998888', // Telefone
+    '88000000',    // CEP
+    'Rua Completa', // Endereço
+    '123',         // Número
+    'Bairro Completo', // Bairro
+    'Curitiba',    // Cidade
+    'PR',          // Estado
+    'Brasil',      // País
+    'Ref123',      // Referência externa (opcional)
+    'Apto 10'      // Complemento (opcional)
+);
+
+$response = $customerEndpoint->create($customer);
+var_dump($response);
+```
+
+### Exemplo de Resposta da API
+
+```php
+array(2) {
+    ["status_code"] => int(200),
+    ["response"] => array(30) {
+        ["object"] => string(8) "customer",
+        ["id"] => string(16) "cus_000006579435",
+        ["dateCreated"] => string(10) "2025-03-18",
+        ["name"] => string(16) "Cliente Completo",
+        ["email"] => string(17) "cliente@teste.com",
+        ["company"] => NULL,
+        ["phone"] => string(12) "551140028922",
+        ["mobilePhone"] => string(13) "5511999998888",
+        ["address"] => string(12) "Rua Completa",
+        ["addressNumber"] => string(3) "123",
+        ["complement"] => string(7) "Apto 10",
+        ["province"] => string(15) "Bairro Completo",
+        ["postalCode"] => string(8) "88000000",
+        ["cpfCnpj"] => string(11) "12345678909",
+        ["personType"] => string(6) "FISICA",
+        ["deleted"] => bool(false),
+        ["additionalEmails"] => NULL,
+        ["externalReference"] => string(6) "Ref123",
+        ["notificationDisabled"] => bool(true),
+        ["observations"] => NULL,
+        ["municipalInscription"] => NULL,
+        ["stateInscription"] => NULL,
+        ["canDelete"] => bool(true),
+        ["cannotBeDeletedReason"] => NULL,
+        ["canEdit"] => bool(true),
+        ["cannotEditReason"] => NULL,
+        ["city"] => NULL,
+        ["cityName"] => NULL,
+        ["state"] => NULL,
+        ["country"] => string(6) "Brasil"
+    }
+}
+```
+
 ## Licença
 
 Este projeto está licenciado sob a licença MIT. Consulte o arquivo `LICENSE` para mais detalhes.
