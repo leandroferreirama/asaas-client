@@ -22,7 +22,9 @@ Este documento descreve como utilizar o cliente PHP para integração com a API 
    ASAAS_TOKEN=seu_token_de_acesso_aqui
    ```
 
-## Uso
+## Criar Subconta
+
+O exemplo abaixo demonstra como criar uma subconta utilizando o cliente PHP:
 
 ```php
 <?php
@@ -33,6 +35,11 @@ use Asaas\AsaasConfig;
 use Asaas\HttpClient;
 use Asaas\Endpoints\SubaccountEndpoint;
 use Asaas\Models\Subaccount;
+use Asaas\Config\VariavelAmbiente;
+
+// Token de acesso
+VariavelAmbiente::load(__DIR__.'/../');
+$token = getenv('ASAAS_TOKEN');
 
 // Configuração
 $config = new AsaasConfig(AsaasConfig::ENV_SANDBOX);
@@ -107,6 +114,11 @@ use Asaas\AsaasConfig;
 use Asaas\HttpClient;
 use Asaas\Endpoints\CustomerEndpoint;
 use Asaas\Models\Customer;
+use Asaas\Config\VariavelAmbiente;
+
+// Token de acesso
+VariavelAmbiente::load(__DIR__.'/../');
+$token = getenv('ASAAS_TOKEN');
 
 // Configuração
 $config = new AsaasConfig(AsaasConfig::ENV_SANDBOX);
