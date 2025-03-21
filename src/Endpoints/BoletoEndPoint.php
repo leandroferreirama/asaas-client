@@ -5,7 +5,7 @@ namespace Asaas\Endpoints;
 use Asaas\Contracts\HttpClientInterface;
 use Asaas\Models\BaseCharge;
 
-class BoletoEndpoint
+class BoletoEndPoint
 {
     private HttpClientInterface $httpClient;
 
