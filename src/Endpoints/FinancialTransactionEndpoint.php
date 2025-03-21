@@ -22,13 +22,14 @@ class FinancialTransactionEndpoint
      * @param string|null $finishDate Data final no formato YYYY-MM-DD (opcional)
      * @return array
      */
-    public function getStatement(string $startDate, string $finishDate, int $offset = 0, int $limit = 100): array
+    public function getStatement(string $startDate, string $finishDate, int $offset = 0, int $limit = 100, string $order = 'asc'): array
     {
         $queryParams = [
             'startDate' => $startDate,
             'finishDate' => $finishDate,
             'offset' => $offset,
             'limit' => $limit,
+            'order' => $order
         ];
         $queryString = http_build_query($queryParams);
 
