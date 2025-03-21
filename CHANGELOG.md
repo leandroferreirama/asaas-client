@@ -8,6 +8,14 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 ### Adicionado
 - Planejamento para novos recursos e melhorias.
 
+## [0.0.8] - 2025-03-21
+### Adicionado
+- Suporte ao parâmetro `order` (asc ou desc) no endpoint de consulta ao extrato financeiro (`/financialTransactions`).
+
+## [0.0.7] - 2025-03-21
+### Adicionado
+- Endpoint para consulta ao extrato financeiro (`/financialTransactions`) com suporte aos parâmetros `offset`, `limit`, `startDate` e `finishDate`.
+
 ## [0.0.6] - 2025-03-21
 ### Adicionado
 - Obtenção da linha digitável do boleto (`identificationField`) no método `create` do endpoint de boletos.
