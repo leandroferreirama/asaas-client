@@ -1,12 +1,19 @@
 # Changelog
 
-Todos os principais eventos e mudanças neste projeto serão documentados aqui.
-
 O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/), e este projeto segue [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ## [Unreleased]
 ### Adicionado
 - Planejamento para novos recursos e melhorias.
+
+## [0.0.6] - 2025-03-21
+### Adicionado
+- Obtenção da linha digitável do boleto (`identificationField`) no método `create` do endpoint de boletos.
+- Obtenção do QR Code para pagamentos via Pix (`payload`) no método `create` do endpoint de boletos.
+
+## [0.0.5] - 2025-03-21
+### Alterado
+- Nome da classe `BoletoEndPoint` para normalizar com o nome do arquivo.
 
 ## [0.0.4] - 2025-03-20
 ### Adicionado
