@@ -11,20 +11,21 @@ class PixTransfer implements TransactionInterface
     private string $pixAddressKeyType;
     private string $operationType;
     private ?string $description;
-
-    private const VALID_KEY_TYPES = ['CPF', 'CNPJ', 'EMAIL', 'PHONE', 'EVP'];
+    private ?string $scheduleDate; // Nova propriedade
 
     public function __construct(
         float $value,
         string $pixAddressKey,
         string $operationType = 'PIX',
-        ?string $description = null
+        ?string $description = null,
+        ?string $scheduleDate = null // Adicionado ao construtor
     ) {
         $this->value = $value;
         $this->pixAddressKey = $pixAddressKey;
         $this->pixAddressKeyType = $this->detectPixKeyType($pixAddressKey);
         $this->operationType = $operationType;
         $this->description = $description;
+        $this->scheduleDate = $scheduleDate;
     }
 
     private function detectPixKeyType(string $pixAddressKey): string
@@ -64,6 +65,11 @@ class PixTransfer implements TransactionInterface
 
         if ($this->description !== null) {
             $data['description'] = $this->description;
+        }
+
+        // Adicionando scheduleDate apenas se preenchido
+        if ($this->scheduleDate !== null) {
+            $data['scheduleDate'] = $this->scheduleDate;
         }
 
         return $data;
