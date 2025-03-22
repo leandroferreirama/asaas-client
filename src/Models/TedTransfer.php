@@ -17,6 +17,7 @@ class TedTransfer implements TransactionInterface
     private ?string $ownerBirthDate;
     private ?string $bankAccountType;
     private ?string $ispb;
+    private ?string $scheduleDate;
 
     public function __construct(
         float $value,
@@ -29,7 +30,8 @@ class TedTransfer implements TransactionInterface
         ?string $description = null,
         ?string $ownerBirthDate = null,
         ?string $bankAccountType = null,
-        ?string $ispb = null
+        ?string $ispb = null,
+        ?string $scheduleDate = null
     ) {
         $this->value = $value;
         $this->ownerName = $ownerName;
@@ -42,6 +44,7 @@ class TedTransfer implements TransactionInterface
         $this->ownerBirthDate = $ownerBirthDate;
         $this->bankAccountType = $bankAccountType;
         $this->ispb = $ispb;
+        $this->scheduleDate = $scheduleDate;
     }
 
     public function toArray(): array
@@ -76,6 +79,11 @@ class TedTransfer implements TransactionInterface
 
         if ($this->ispb !== null) {
             $data['bankAccount']['ispb'] = $this->ispb;
+        }
+
+        // Adicionando scheduleDate apenas se preenchido
+        if ($this->scheduleDate !== null) {
+            $data['scheduleDate'] = $this->scheduleDate;
         }
 
         return $data;
