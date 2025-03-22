@@ -8,6 +8,12 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 ### Adicionado
 - Planejamento para novos recursos e melhorias.
 
+## [0.0.9] - 2025-03-22
+### Lançado
+- Endpoint para **pagamento de contas**.
+- Endpoint para **transferência TED**.
+- Endpoint para **transferência Pix**.
+
 ## [0.0.8] - 2025-03-21
 ### Adicionado
 - Suporte ao parâmetro `order` (asc ou desc) no endpoint de consulta ao extrato financeiro (`/financialTransactions`).
