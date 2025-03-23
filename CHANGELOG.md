@@ -8,6 +8,10 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 ### Adicionado
 - Planejamento para novos recursos e melhorias.
 
+## [0.0.10] - 2025-03-22
+### Corrigido
+- Envio da model `Payment` que não havia sido incluída no repositório anteriormente.
+
 ## [0.0.9] - 2025-03-22
 ### Lançado
 - Endpoint para **pagamento de contas**.
