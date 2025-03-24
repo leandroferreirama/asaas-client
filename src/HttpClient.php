@@ -49,18 +49,32 @@ class HttpClient implements HttpClientInterface
         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
         if (curl_errno($ch)) {
-            throw new Exception('Erro na requisição: ' . curl_error($ch));
-        }
-
-        if ($httpCode < 200 || $httpCode >= 300) {
-            throw new Exception("Erro HTTP: Código $httpCode, Resposta: $response");
+            curl_close($ch);
+            return [
+                'status_code' => 500,
+                'response' => [
+                    'error' => 'Erro na requisição: ' . curl_error($ch),
+                ],
+            ];
         }
 
         curl_close($ch);
 
+        $decodedResponse = json_decode($response, true);
+
+        if ($httpCode < 200 || $httpCode >= 300) {
+            return [
+                'status_code' => $httpCode,
+                'response' => $decodedResponse ?? [
+                    'error' => 'Erro HTTP: Código ' . $httpCode,
+                    'raw_response' => $response,
+                ],
+            ];
+        }
+
         return [
             'status_code' => $httpCode,
-            'response' => json_decode($response, true),
+            'response' => $decodedResponse,
         ];
     }
 }
