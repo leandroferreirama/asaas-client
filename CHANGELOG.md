@@ -8,6 +8,10 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 ### Adicionado
 - Planejamento para novos recursos e melhorias.
 
+## [0.0.12] - 2025-03-24
+### Adicionado
+- Inclusão do envio da chave Pix com suporte aos tipos: CPF, CNPJ, TELEFONE, EVP e EMAIL.
+
 ## [0.0.11] - 2025-03-23
 ### Alterado
 - Padronização da resposta do `HttpClient` para retornar sempre um array com as chaves `status_code` e `response`, tanto para respostas de sucesso quanto para erros.
