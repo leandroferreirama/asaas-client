@@ -18,11 +18,17 @@ class PixTransfer implements TransactionInterface
         string $pixAddressKey,
         string $operationType = 'PIX',
         ?string $description = null,
-        ?string $scheduleDate = null // Adicionado ao construtor
+        ?string $scheduleDate = null,
+        ?string $pixAddressKeyType = null
     ) {
         $this->value = $value;
         $this->pixAddressKey = $pixAddressKey;
-        $this->pixAddressKeyType = $this->detectPixKeyType($pixAddressKey);
+        if(is_null($pixAddressKeyType)){
+            #Se não enviar ele tenta identificar, mas pode haver uma margem de erro, entre o cpf e telefone.
+            $this->pixAddressKeyType = $this->detectPixKeyType($pixAddressKey);
+        } else {
+            $this->pixAddressKeyType = $pixAddressKeyType;
+        }
         $this->operationType = $operationType;
         $this->description = $description;
         $this->scheduleDate = $scheduleDate;
