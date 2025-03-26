@@ -8,6 +8,13 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 ### Adicionado
 - Planejamento para novos recursos e melhorias.
 
+## [0.0.13] - 2025-03-25
+### Adicionado
+- Suporte ao recebimento em cartão de crédito, incluindo:
+  - Tokenização de cartão de crédito.
+  - Criação de cobranças via cartão de crédito.
+  - Suporte a informações completas do cartão e do titular.
+
 ## [0.0.12] - 2025-03-24
 ### Adicionado
 - Inclusão do envio da chave Pix com suporte aos tipos: CPF, CNPJ, TELEFONE, EVP e EMAIL.
