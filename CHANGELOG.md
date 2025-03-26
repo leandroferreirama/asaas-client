@@ -8,6 +8,10 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 ### Adicionado
 - Planejamento para novos recursos e melhorias.
 
+## [0.0.16] - 2025-03-27
+### Alterado
+- Alteração da rota para trazer dados completos nas respostas das cobranças.
+
 ## [0.0.15] - 2025-03-26
 ### Corrigido
 - Envio da `ChargeFactory` que não havia sido incluída no repositório anteriormente.
