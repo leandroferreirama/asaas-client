@@ -8,6 +8,10 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 ### Adicionado
 - Planejamento para novos recursos e melhorias.
 
+## [0.0.15] - 2025-03-26
+### Corrigido
+- Envio da `ChargeFactory` que não havia sido incluída no repositório anteriormente.
+
 ## [0.0.14] - 2025-03-26
 ### Adicionado
 - Suporte à captura de cobranças com pré-autorização no cartão de crédito:
