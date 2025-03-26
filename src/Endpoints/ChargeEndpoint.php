@@ -19,7 +19,7 @@ class ChargeEndpoint
 
     public function create(TransactionInterface $charge): array
     {
-        return $this->httpClient->request('POST', '/lean/payments', $charge->toArray());
+        return $this->httpClient->request('POST', '/payments', $charge->toArray());
     }
 
     public function tokenizeCreditCard(TransactionInterface $tokenization): array
