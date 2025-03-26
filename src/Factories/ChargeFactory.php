@@ -27,13 +27,44 @@ class ChargeFactory
         string $customer,
         float $value,
         string $dueDate,
-        array $creditCard,
-        array $creditCardHolderInfo,
+        string $holderName,
+        string $number,
+        string $expiryMonth,
+        string $expiryYear,
+        string $ccv,
+        string $cardHolderName,
+        string $cardHolderEmail,
+        string $cardHolderCpfCnpj,
+        string $postalCode,
+        string $addressNumber,
+        ?string $addressComplement,
+        string $phone,
+        string $mobilePhone,
         string $ip,
         ?string $description = null,
         ?string $externalReference = null
     ): BaseCharge {
         $charge = new BaseCharge($customer, 'CREDIT_CARD', $value, $dueDate, $description, $externalReference);
+
+        $creditCard = [
+            'holderName' => $holderName,
+            'number' => $number,
+            'expiryMonth' => $expiryMonth,
+            'expiryYear' => $expiryYear,
+            'ccv' => $ccv,
+        ];
+
+        $creditCardHolderInfo = [
+            'name' => $cardHolderName,
+            'email' => $cardHolderEmail,
+            'cpfCnpj' => $cardHolderCpfCnpj,
+            'postalCode' => $postalCode,
+            'addressNumber' => $addressNumber,
+            'addressComplement' => $addressComplement,
+            'phone' => $phone,
+            'mobilePhone' => $mobilePhone,
+        ];
+
         $charge->addCreditCardData($creditCard, $creditCardHolderInfo, $ip);
 
         return $charge;
