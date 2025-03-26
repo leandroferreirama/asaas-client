@@ -42,7 +42,8 @@ class ChargeFactory
         string $mobilePhone,
         string $ip,
         ?string $description = null,
-        ?string $externalReference = null
+        ?string $externalReference = null,
+        bool $authorizeOnly = false // Novo parâmetro com valor padrão
     ): BaseCharge {
         $charge = new BaseCharge($customer, 'CREDIT_CARD', $value, $dueDate, $description, $externalReference);
 
@@ -66,6 +67,9 @@ class ChargeFactory
         ];
 
         $charge->addCreditCardData($creditCard, $creditCardHolderInfo, $ip);
+
+        // Adicionando o campo authorizeOnly
+        $charge->setAuthorizeOnly($authorizeOnly);
 
         return $charge;
     }
