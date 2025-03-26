@@ -14,6 +14,7 @@ class BaseCharge implements TransactionInterface
     protected ?string $description;
     protected ?string $externalReference;
     protected array $extraFields = [];
+    private bool $authorizeOnly = false; // Novo campo
 
     public function __construct(
         string $customer,
@@ -188,6 +189,11 @@ class BaseCharge implements TransactionInterface
         ];
     }
 
+    public function setAuthorizeOnly(bool $authorizeOnly): void
+    {
+        $this->authorizeOnly = $authorizeOnly;
+    }
+
     /**
      * Converte os dados da cobrança para um array.
      *
@@ -209,6 +215,8 @@ class BaseCharge implements TransactionInterface
         if ($this->externalReference !== null) {
             $data['externalReference'] = $this->externalReference;
         }
+
+        $data['authorizeOnly'] = $this->authorizeOnly; // Incluindo o campo no array final
 
         return array_merge($data, $this->extraFields);
     }

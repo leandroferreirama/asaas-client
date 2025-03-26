@@ -26,4 +26,10 @@ class ChargeEndpoint
     {
         return $this->httpClient->request('POST', '/creditCard/tokenizeCreditCard', $tokenization->toArray());
     }
+
+    public function captureAuthorizedPayment(string $paymentId): array
+    {
+        $endpoint = "/payments/{$paymentId}/captureAuthorizedPayment";
+        return $this->httpClient->request('POST', $endpoint);
+    }
 }
