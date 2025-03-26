@@ -8,6 +8,11 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 ### Adicionado
 - Planejamento para novos recursos e melhorias.
 
+## [0.0.14] - 2025-03-26
+### Adicionado
+- Suporte à captura de cobranças com pré-autorização no cartão de crédito:
+  - Método `captureAuthorizedPayment` no `ChargeEndpoint` para capturar cobranças autorizadas.
+
 ## [0.0.13] - 2025-03-25
 ### Adicionado
 - Suporte ao recebimento em cartão de crédito, incluindo:
