@@ -8,6 +8,12 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 ### Adicionado
 - Planejamento para novos recursos e melhorias.
 
+## [0.0.17] - 2025-03-28
+### Adicionado
+- Suporte ao envio do código do banco (`bankCode`) na transferência via TED:
+  - Ajuste na classe `TedTransfer` para aceitar o código do banco ou o ISPB.
+  - Validação para garantir que pelo menos um dos dois campos seja informado.
+
 ## [0.0.16] - 2025-03-27
 ### Alterado
 - Alteração da rota para trazer dados completos nas respostas das cobranças.

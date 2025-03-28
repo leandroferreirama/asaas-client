@@ -6,45 +6,24 @@ use Asaas\Contracts\TransactionInterface;
 
 class TedTransfer implements TransactionInterface
 {
-    private float $value;
-    private string $ownerName;
-    private string $cpfCnpj;
-    private string $agency;
-    private string $account;
-    private string $accountDigit;
-    private ?string $accountName;
-    private ?string $description;
-    private ?string $ownerBirthDate;
-    private ?string $bankAccountType;
-    private ?string $ispb;
-    private ?string $scheduleDate;
-
     public function __construct(
-        float $value,
-        string $ownerName,
-        string $cpfCnpj,
-        string $agency,
-        string $account,
-        string $accountDigit,
-        ?string $accountName = null,
-        ?string $description = null,
-        ?string $ownerBirthDate = null,
-        ?string $bankAccountType = null,
-        ?string $ispb = null,
-        ?string $scheduleDate = null
+        private float $value,
+        private string $ownerName,
+        private string $cpfCnpj,
+        private string $agency,
+        private string $account,
+        private string $accountDigit,
+        private ?string $bankCode = null,
+        private ?string $accountName = null,
+        private ?string $description = null,
+        private ?string $ownerBirthDate = null,
+        private ?string $bankAccountType = null,
+        private ?string $ispb = null,
+        private ?string $scheduleDate = null
     ) {
-        $this->value = $value;
-        $this->ownerName = $ownerName;
-        $this->cpfCnpj = $cpfCnpj;
-        $this->agency = $agency;
-        $this->account = $account;
-        $this->accountDigit = $accountDigit;
-        $this->accountName = $accountName;
-        $this->description = $description;
-        $this->ownerBirthDate = $ownerBirthDate;
-        $this->bankAccountType = $bankAccountType;
-        $this->ispb = $ispb;
-        $this->scheduleDate = $scheduleDate;
+        if (empty($this->bankCode) && empty($this->ispb)) {
+            throw new \InvalidArgumentException('É necessário informar o código do banco (bankCode) ou o ISPB.');
+        }
     }
 
     public function toArray(): array
@@ -84,6 +63,12 @@ class TedTransfer implements TransactionInterface
         // Adicionando scheduleDate apenas se preenchido
         if ($this->scheduleDate !== null) {
             $data['scheduleDate'] = $this->scheduleDate;
+        }
+
+        if (!empty($this->bankCode)) {
+            $data['bankAccount']['bank'] = ['code' => $this->bankCode];
+        } elseif (!empty($this->ispb)) {
+            $data['bankAccount']['ispb'] = $this->ispb;
         }
 
         return $data;

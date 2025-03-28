@@ -29,12 +29,13 @@ try {
         '52233424611', // CPF ou CNPJ
         '1263', // Agência
         '9999991', // Conta bancária
-        '1', // Dígito da conta
+        '1',// Dígito da conta bancária
+        null,// código do banco (opcional se informado o ISPB)
         'Conta do Bradesco', // Nome da conta (opcional)
         'Transferência via TED', // Descrição (opcional)
         null, // Data de nascimento (opcional)
         'CONTA_CORRENTE', // Tipo da conta (opcional)
-        '60746948' // ISPB (opcional)
+        '60746948' // ISPB (opcional se informado o código do banco)
     );
 
     $response = $transferEndpoint->create($tedTransfer);
