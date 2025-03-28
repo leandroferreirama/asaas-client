@@ -7,12 +7,12 @@ use Asaas\Contracts\TransactionInterface;
 class TedTransfer implements TransactionInterface
 {
     public function __construct(
-        private float $value,
-        private string $ownerName,
-        private string $cpfCnpj,
-        private string $agency,
-        private string $account,
-        private string $accountDigit,
+        private ?float $value,
+        private ?string $ownerName,
+        private ?string $cpfCnpj,
+        private ?string $agency,
+        private ?string $account,
+        private ?string $accountDigit,
         private ?string $bankCode = null,
         private ?string $accountName = null,
         private ?string $description = null,
@@ -21,6 +21,37 @@ class TedTransfer implements TransactionInterface
         private ?string $ispb = null,
         private ?string $scheduleDate = null
     ) {
+        // Validação do valor da transferência
+        if ($this->value <= 0) {
+            throw new \InvalidArgumentException('O valor da transferência deve ser maior que zero.');
+        }
+
+        // Validação do nome do proprietário
+        if (empty($this->ownerName)) {
+            throw new \InvalidArgumentException('O nome do proprietário da conta é obrigatório.');
+        }
+
+        // Validação do CPF ou CNPJ
+        if (empty($this->cpfCnpj)) {
+            throw new \InvalidArgumentException('O CPF ou CNPJ do proprietário da conta é obrigatório.');
+        }
+
+        // Validação da agência
+        if (empty($this->agency)) {
+            throw new \InvalidArgumentException('O número da agência é obrigatório.');
+        }
+
+        // Validação da conta bancária
+        if (empty($this->account)) {
+            throw new \InvalidArgumentException('O número da conta bancária é obrigatório.');
+        }
+
+        // Validação do dígito da conta bancária
+        if (empty($this->accountDigit)) {
+            throw new \InvalidArgumentException('O dígito da conta bancária é obrigatório.');
+        }
+
+        // Validação do código do banco ou ISPB
         if (empty($this->bankCode) && empty($this->ispb)) {
             throw new \InvalidArgumentException('É necessário informar o código do banco (bankCode) ou o ISPB.');
         }
