@@ -8,6 +8,12 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 ### Adicionado
 - Planejamento para novos recursos e melhorias.
 
+## [0.0.18] - 2025-03-28
+### Adicionado
+- Validação aprimorada na classe `TedTransfer`:
+  - Mensagens claras para campos obrigatórios ausentes, como `value`, `ownerName`, `cpfCnpj`, `agency`, `account`, `accountDigit`, e `bankCode` ou `ispb`.
+  - Garantia de que o valor da transferência seja maior que zero.
+
 ## [0.0.17] - 2025-03-28
 ### Adicionado
 - Suporte ao envio do código do banco (`bankCode`) na transferência via TED:
