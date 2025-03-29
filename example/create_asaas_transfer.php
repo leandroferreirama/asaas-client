@@ -6,13 +6,13 @@ use Asaas\AsaasConfig;
 use Asaas\Config\VariavelAmbiente;
 use Asaas\HttpClient;
 use Asaas\Endpoints\TransferEndpoint;
-use Asaas\Models\PixTransfer;
+use Asaas\Models\AsaasTransfer;
 
 try {
     //token de acesso
     VariavelAmbiente::load(__DIR__.'/../');
     $token = getenv('ASAAS_TOKEN');
-    
+
     // Configuração
     $config = new AsaasConfig(AsaasConfig::ENV_SANDBOX);
     $httpClient = new HttpClient(
@@ -22,15 +22,14 @@ try {
 
     $transferEndpoint = new TransferEndpoint($httpClient);
 
-    // Transferência via PIX (detecção automática do tipo da chave)
-    $pixTransfer = new PixTransfer(
-        200.0, // Valor da transferência
-        '03597607918', // Chave PIX (EMAIL neste caso)
-        'PIX', // Tipo de operação
-        'Transferência via PIX' // Descrição opcional
+    // Transferência para conta Asaas
+    $asaasTransfer = new AsaasTransfer(
+        100.0, // Valor da transferência
+        'b388dd83-0082-4296-ba39-53beb40aaaaa', // ID da conta Asaas
+        'Transferência para conta Asaas' // Descrição opcional
     );
-var_dump($pixTransfer);
-    $response = $transferEndpoint->create($pixTransfer);
+
+    $response = $transferEndpoint->create($asaasTransfer);
 
     var_dump($response);
 } catch (Exception $e) {

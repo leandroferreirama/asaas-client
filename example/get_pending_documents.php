@@ -5,8 +5,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use Asaas\AsaasConfig;
 use Asaas\Config\VariavelAmbiente;
 use Asaas\HttpClient;
-use Asaas\Endpoints\PaymentEndpoint;
-use Asaas\Models\Payment;
+use Asaas\Endpoints\AccountDocumentEndpoint;
 
 try {
     //token de acesso
@@ -16,19 +15,13 @@ try {
     // Configuração
     $config = new AsaasConfig(AsaasConfig::ENV_SANDBOX);
     $httpClient = new HttpClient(
-        $token,
+        '$aact_hmlg_000MzkwODA2MWY2OGM3MWRlMDU2NWM3MzJlNzZmNGZhZGY6OjI3YzcxYjU3LTM1MjktNGNjNC1hYWY5LWIzZGY4YzViNjE2Mzo6JGFhY2hfMTI2YTZjZGYtM2M2ZC00ZmFiLWJiYzYtZGRkNzIwMTNkMzA1',
         $config
     );
 
-    $paymentEndpoint = new PaymentEndpoint($httpClient);
+    $documentEndpoint = new AccountDocumentEndpoint($httpClient);
 
-    // Criar pagamento de conta479201012298800000030400
-    $payment = new Payment(
-        '00190.00009 02831.814005 21320.604172 7 10370000012830',
-        scheduleDate: '2025-03-24'
-    );
-
-    $response = $paymentEndpoint->create($payment);
+    $response = $documentEndpoint->getPendingDocuments();
 
     var_dump($response);
 } catch (Exception $e) {

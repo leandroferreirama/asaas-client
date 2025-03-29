@@ -5,8 +5,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use Asaas\AsaasConfig;
 use Asaas\Config\VariavelAmbiente;
 use Asaas\HttpClient;
-use Asaas\Endpoints\PaymentEndpoint;
-use Asaas\Models\Payment;
+use Asaas\Endpoints\SubaccountEndpoint;
 
 try {
     //token de acesso
@@ -16,19 +15,16 @@ try {
     // Configuração
     $config = new AsaasConfig(AsaasConfig::ENV_SANDBOX);
     $httpClient = new HttpClient(
-        $token,
+        '$aact_YTU5YTE0M2M2N2I4MTliNzk0YTI5N2U5MzdjNWZmNDQ6OjAwMDAwMDAwMDAwMDAwOTU0Nzk6OiRhYWNoXzg2YWQxYTI1LWYzN2UtNDc2My05NmI1LTg0NGZhYTFlZjQ3ZA==',
         $config
     );
 
-    $paymentEndpoint = new PaymentEndpoint($httpClient);
+    $subaccountEndpoint = new SubaccountEndpoint($httpClient);
 
-    // Criar pagamento de conta479201012298800000030400
-    $payment = new Payment(
-        '00190.00009 02831.814005 21320.604172 7 10370000012830',
-        scheduleDate: '2025-03-24'
-    );
+    // ID da subconta para consulta
+    $subaccountId = '304c54b3-7e59-4d6b-98c1-6e4b070fafbd';
 
-    $response = $paymentEndpoint->create($payment);
+    $response = $subaccountEndpoint->getById($subaccountId);
 
     var_dump($response);
 } catch (Exception $e) {

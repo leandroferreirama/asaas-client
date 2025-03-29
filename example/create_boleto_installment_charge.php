@@ -38,6 +38,9 @@ try {
         450.0,   // Valor total (opcionalmente pode usar installmentValue)
         null     // Valor individual de cada parcela (calculado automaticamente)
     );
+    $boletoCharge->addInterest(1);
+    $boletoCharge->addFine(2, 'PERCENTAGE');
+    $boletoCharge->addDiscount(10, 5, 'PERCENTAGE');
 
     // Criando a cobrança e obtendo o Identification Field
     $response = $boletoEndpoint->create($boletoCharge);
