@@ -8,6 +8,18 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 ### Adicionado
 - Planejamento para novos recursos e melhorias.
 
+## [0.0.20] - 2025-03-29
+### Adicionado
+- Exemplos de criação de cobranças via Pix:
+  - Exemplo de criação de cobrança com chave Pix.
+  - Exemplo de criação de cobrança com QR Code Pix.
+
+## [0.0.19] - 2025-03-28
+### Corrigido
+- Ajuste na model `TedTransfer`:
+  - Alteração para permitir que o campo `cpfCnpj` aceite valores nulos (`null`).
+  - Adicionada validação para retornar mensagens de erro no padrão da API quando campos obrigatórios não forem preenchidos.
+
 ## [0.0.18] - 2025-03-28
 ### Adicionado
 - Validação aprimorada na classe `TedTransfer`:
