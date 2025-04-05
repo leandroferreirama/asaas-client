@@ -25,9 +25,7 @@ try {
     $paymentId = 'pay_080225913252';
 
     // Excluindo a cobrança
-    if ($boletoEndpoint->delete($paymentId)) {
-        echo "Cobrança excluída com sucesso.";
-    }
+    $response = $boletoEndpoint->delete($paymentId);
 } catch (Exception $e) {
     echo 'Erro: ' . $e->getMessage();
 }
