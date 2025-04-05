@@ -8,6 +8,13 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 ### Adicionado
 - Planejamento para novos recursos e melhorias.
 
+## [0.0.21] - 2025-04-05
+### Adicionado
+- Método `update` na classe `BoletoEndpoint` para permitir a alteração de cobranças existentes:
+  - Atualização dinâmica dos campos `billingType`, `value` e `dueDate`.
+  - Validação para garantir que o campo `billingType` seja obrigatório.
+- Método `delete` na classe `BoletoEndpoint` para permitir a exclusão de cobranças existentes.
+
 ## [0.0.20] - 2025-03-29
 ### Adicionado
 - Exemplos de criação de cobranças via Pix:
