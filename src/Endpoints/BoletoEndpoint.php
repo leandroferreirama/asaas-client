@@ -79,4 +79,17 @@ class BoletoEndpoint
 
         return $response['response'];
     }
+
+    public function delete(string $paymentId): bool
+    {
+        // Enviar a requisição DELETE para o endpoint de exclusão
+        $response = $this->httpClient->request('DELETE', "/payments/{$paymentId}");
+
+        // Verificar se a resposta contém a chave 'status'
+        if (!isset($response['status']) || $response['status'] !== 'success') {
+            throw new \Exception('Erro ao excluir a cobrança: resposta inválida da API.');
+        }
+
+        return true;
+    }
 }
