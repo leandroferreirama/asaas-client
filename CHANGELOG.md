@@ -8,6 +8,11 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 ### Adicionado
 - Planejamento para novos recursos e melhorias.
 
+## [0.0.22] - 2025-04-05
+### Alterado
+- Padronização das respostas dos métodos `update` e `delete` na classe `BoletoEndpoint`:
+  - Ambos os métodos agora retornam a resposta completa da API, garantindo maior flexibilidade no tratamento das respostas.
+
 ## [0.0.21] - 2025-04-05
 ### Adicionado
 - Método `update` na classe `BoletoEndpoint` para permitir a alteração de cobranças existentes:
