@@ -8,6 +8,14 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 ### Adicionado
 - Planejamento para novos recursos e melhorias.
 
+## [0.0.23] - 2025-04-07
+### Adicionado
+- Suporte à emissão de **invoices**:
+  - Método `createInvoice` na classe `InvoiceEndpoint` para criar invoices.
+  - Método `getInvoice` para consultar invoices por ID.
+  - Método `cancelInvoice` para cancelar invoices existentes.
+  - Validação para garantir que os campos obrigatórios, como `customer`, `value` e `dueDate`, sejam preenchidos.
+
 ## [0.0.22] - 2025-04-05
 ### Alterado
 - Padronização das respostas dos métodos `update` e `delete` na classe `BoletoEndpoint`:
