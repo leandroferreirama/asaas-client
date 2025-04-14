@@ -57,6 +57,6 @@ class PixEndpoint
         }
 
         // Enviar a requisição para o endpoint de pagamento de QR Code
-        return $this->httpClient->request('POST', '/v3/pix/qrCodes/pay', $data);
+        return $this->httpClient->request('POST', '/pix/qrCodes/pay', $data);
     }
 }

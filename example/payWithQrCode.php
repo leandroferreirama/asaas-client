@@ -21,11 +21,8 @@ try {
 
     // Realizar o pagamento via QR Code
     $response = $pixEndpoint->payWithQrCode(
-        'EXEMPLO_PAYLOAD_QRCODE', // Payload do QR Code
-        100.00,                  // Valor
-        'Pagamento de churrasco', // Descrição (opcional)
-        '2025-04-15',            // Data de agendamento (opcional)
-        10.00                    // Valor do troco (opcional)
+        '00020101021226840014br.gov.bcb.pix2562qr.iugu.com/public/payload/v2/7CBA60A6B12F42D4B403DF59EAD478D55204000053039865406179.005802BR5925FRANCIELI BARBOZA DE SOUZ6007OLIMPIA62070503***6304660F', // Payload do QR Code
+        179.00,                  // Valor
     );
 
     // Exibir a resposta
