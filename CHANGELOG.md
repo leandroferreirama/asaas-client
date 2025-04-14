@@ -8,6 +8,12 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 ### Adicionado
 - Planejamento para novos recursos e melhorias.
 
+## [0.0.25] - 2025-04-15
+### Corrigido
+- Ajuste no endpoint de pagamento de QR Codes na classe `PixEndpoint`:
+  - Corrigido o caminho do endpoint para `/v3/pix/qrCodes/pay`.
+  - Simplificação do método `payWithQrCode` para receber os parâmetros diretamente.
+
 ## [0.0.24] - 2025-04-14
 ### Adicionado
 - Suporte ao pagamento de QR Codes:
