@@ -34,4 +34,29 @@ class PixEndpoint
 
         return $chargeResponse;
     }
+
+    public function payWithQrCode(string $payload, float $value, ?string $description = null, ?string $scheduleDate = null, ?float $changeValue = null): array
+    {
+        // Montar o corpo da requisição
+        $data = [
+            'qrCode' => [
+                'payload' => $payload,
+            ],
+            'value' => $value,
+        ];
+
+        // Adicionar parâmetros opcionais, se fornecidos
+        if ($description !== null) {
+            $data['description'] = $description;
+        }
+        if ($scheduleDate !== null) {
+            $data['scheduleDate'] = $scheduleDate;
+        }
+        if ($changeValue !== null) {
+            $data['qrCode']['changeValue'] = $changeValue;
+        }
+
+        // Enviar a requisição para o endpoint de pagamento de QR Code
+        return $this->httpClient->request('POST', '/v3/pix/qrCodes/pay', $data);
+    }
 }

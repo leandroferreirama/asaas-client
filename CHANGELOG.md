@@ -8,6 +8,12 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 ### Adicionado
 - Planejamento para novos recursos e melhorias.
 
+## [0.0.24] - 2025-04-14
+### Adicionado
+- Suporte ao pagamento de QR Codes:
+  - Método `payWithQrCode` na classe `PixEndpoint` para realizar pagamentos utilizando QR Codes.
+  - Parâmetros suportados: `payload`, `value`, `description` (opcional), `scheduleDate` (opcional) e `changeValue` (opcional).
+
 ## [0.0.23] - 2025-04-07
 ### Adicionado
 - Suporte à emissão de **invoices**:
