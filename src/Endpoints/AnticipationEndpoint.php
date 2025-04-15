@@ -26,6 +26,6 @@ class AnticipationEndpoint
             throw new \InvalidArgumentException('O parâmetro "id" é obrigatório.');
         }
 
-        return $this->httpClient->request('GET', "/v3/anticipations/{$id}");
+        return $this->httpClient->request('GET', "/anticipations/{$id}");
     }
 }

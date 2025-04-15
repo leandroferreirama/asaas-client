@@ -8,6 +8,11 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 ### Adicionado
 - Planejamento para novos recursos e melhorias.
 
+## [0.0.27] - 2025-04-17
+### Corrigido
+- Ajuste no endpoint de recuperação de antecipação na classe `AnticipationEndpoint`:
+  - Corrigido o caminho do endpoint para `/anticipations/{id}`.
+
 ## [0.0.26] - 2025-04-16
 ### Adicionado
 - Método `getAnticipationById` na classe `AnticipationEndpoint` para recuperar uma única antecipação pelo ID.
@@ -15,7 +20,7 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 ## [0.0.25] - 2025-04-15
 ### Corrigido
 - Ajuste no endpoint de pagamento de QR Codes na classe `PixEndpoint`:
-  - Corrigido o caminho do endpoint para `/v3/pix/qrCodes/pay`.
+  - Corrigido o caminho do endpoint para `/pix/qrCodes/pay`.
   - Simplificação do método `payWithQrCode` para receber os parâmetros diretamente.
 
 ## [0.0.24] - 2025-04-14
