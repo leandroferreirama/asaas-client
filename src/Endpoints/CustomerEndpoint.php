@@ -38,4 +38,9 @@ class CustomerEndpoint
     {
         return $this->httpClient->request('GET', "/customers?cpfCnpj={$cpfCnpj}");
     }
+
+    public function findById(string $customerId): array
+    {
+        return $this->httpClient->request('GET', "/customers/$customerId");
+    }
 }

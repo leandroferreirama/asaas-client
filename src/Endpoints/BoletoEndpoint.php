@@ -43,7 +43,7 @@ class BoletoEndpoint
         if (isset($pixQrCodeResponse['response']['payload'])) {
             $chargeResponse['response']['pixQrCodePayload'] = $pixQrCodeResponse['response']['payload'];
         } else {
-            throw new \Exception('Erro ao obter o QR Code do Pix: payload não retornado.');
+            $chargeResponse['response']['pixQrCodePayload'] = null;
         }
 
         return $chargeResponse;
